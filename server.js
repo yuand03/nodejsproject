@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session')
 var flash = require('connect-flash');
 
 var index = require('./routes/index');
@@ -21,6 +22,11 @@ app.set('view engine', 'twig');
 //app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+var sess = {
+  secret: 'keyboard cat',
+  cookie: {}
+}
+app.use((session(sess)));
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
