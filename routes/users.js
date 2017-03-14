@@ -8,6 +8,6 @@ router.get('/', function(req, res, next) {
 });
 */
 router.get('/', function(req, res, next) {
-  res.render('users', { title: 'users' });
+  res.render('users', { title: 'users' ,info:req.flash('info')});
 });
 module.exports = router;
